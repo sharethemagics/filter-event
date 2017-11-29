@@ -1,0 +1,15 @@
+<select [(ngModel)]="makeListFilter" (ngModelChange)="selectMake()">
+  <option *ngFor="let muscleCar of muscleCars" [ngValue]="muscleCar">{{muscleCar.name}}</option>
+</select>
+
+<select [(ngModel)]="modelListFilter" (ngModelChange)="selectModel()">
+  <option *ngFor="let m of makeListFilter?.models" [ngValue]="m.model">{{m['model']}}</option>
+</select>
+
+<ul>
+  <li *ngFor="let _car1 of _cars | makeFilter:makeSearch | modelFilter:modelSearch">
+    <h2>{{_car1.id}} {{_car1.carMake}} {{_car1.carModel}}</h2>
+  </li>
+</ul>
+
+<app-main></app-main>
